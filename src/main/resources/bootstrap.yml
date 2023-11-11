@@ -2,17 +2,75 @@ server:
   port: 8761 #Estandar para eureka server
 
 spring:
+  config:
+    activate:
+      on-profile: default
   application:
-    name: discovery-server
+    name: discovery-server #Nombre de la aplicacion
 
 eureka:
   instance:
     hostname: localhost
-    prefer-ip-address: true
-    lease-expiration-duration-in-seconds: 30
-    lease-renewal-interval-in-seconds: 30
+    prefer-ip-address: true #Los servicios se registran con su ip
+    lease-expiration-duration-in-seconds: 30 #Vigencia de un microservicio con eureka server
+    lease-renewal-interval-in-seconds: 30 #Eureka server hara ping a los microservicios
   client:
-    fetch-registry: false
-    register-with-eureka: false
+    fetch-registry: false #Para que la instancia no se registre
+    register-with-eureka: false #Para que la instancia no se registre
     service-url:
-      default-zone: http://localhost:8761/eureka
+      default-zone: http://localhost:8761/eureka/ #Sirve para especificar el endpoint
+  datacenter: Mitocode
+  environment: Development
+
+---
+#
+#server:
+#  port: 8762
+#
+#spring:
+#  config:
+#    activate:
+#      on-profile: profile-01
+#  application:
+#    name: discovery-server
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#    prefer-ip-address: true
+#    lease-expiration-duration-in-seconds: 30
+#    lease-renewal-interval-in-seconds: 30
+#  client:
+#    fetch-registry: false
+#    register-with-eureka: false
+#    service-url:
+#      default-zone: http://localhost:8762/eureka
+#  datacenter: Mitocode
+#  environment: Development
+#
+#---
+#
+#
+#server:
+#  port: 8763
+#
+#spring:
+#  config:
+#    activate:
+#      on-profile: profile-01
+#  application:
+#    name: discovery-server
+#
+#eureka:
+#  instance:
+#    hostname: localhost
+#    prefer-ip-address: true
+#    lease-expiration-duration-in-seconds: 30
+#    lease-renewal-interval-in-seconds: 30
+#  client:
+#    fetch-registry: false
+#    register-with-eureka: false
+#    service-url:
+#      default-zone: http://localhost:8763/eureka
+#  datacenter: Mitocode
+#  environment: Development
